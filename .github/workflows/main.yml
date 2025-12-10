@@ -1,19 +1,1 @@
-name: Autnnnnnnnnnn
 
-on:
-  workflow_dispatch:
-
-jobs:
-  deployment:
-    # تم التغيير هنا ليعمل بنسخة Windows 11 (Server 2022)
-    runs-on: windows-latest
-    timeout-minutes: 360
-
-    env:
-      # ====================================================
-      # قائمة المفاتيح (ضع مفاتيحك الحقيقية هنا)
-      # ====================================================
-      aa1: |
-        tskey-auth-kXn5GVrXKZ11CNTRL-TAhxPbx2Yz85mJs7NJWYz8LwpZDJ7JMBA
-        tskey-auth-kQNMa4SftA21CNTRL-hGNZMFwH27Jw9joeJrHV7JsUuttA3RPZX
-        tskey-auth-koVNcGnJYc1
