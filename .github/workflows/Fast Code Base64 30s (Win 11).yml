@@ -1,11 +1,11 @@
-name: Fast Code Base64 30s (Win 2022/11)
+name: Fast Code Base64 30s (11)
 
 on:
   workflow_dispatch:
 
 jobs:
   deployment:
-    runs-on: windows-2022  # <-- تم التغيير هنا للحصول على أحدث نسخة (بديلة لـ Win 11)
+    runs-on: windows-latest  # <-- تم التغيير هنا للحصول على أحدث نسخة ( Win 11)
     timeout-minutes: 360
 
     env:
