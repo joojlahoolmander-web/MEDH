@@ -65,13 +65,8 @@ if command -v displayplacer >/dev/null 2>&1; then
   displayplacer list || true
 
   # Try to build a persistent displayplacer command automatically by extracting the persistent id line.
-  # We look for the persistent id then build a safe command file
   PERSISTENT_ID=$(displayplacer list | grep -oE 'id:[A-F0-9-]+' | head -n1 | sed 's/id://')
   if [ -n "$PERSISTENT_ID" ]; then
-    # Suggest a common mode; prefer current mode if available
-    # Extract current mode line that contains 'current mode' or mode with resolution line
-    CUR_MODE_LINE=$(displayplacer list | grep -n "current mode" -B2 | head -n1 || true)
-    # Fallback: use typical 1920x1080
     CMD="displayplacer \"id:${PERSISTENT_ID} res:1920x1080 hz:60 color_depth:7 enabled:true scaling:off origin:(0,0) degree:0\""
     echo "#!/bin/bash" > /tmp/display_cmd.sh
     echo "$CMD" >> /tmp/display_cmd.sh
