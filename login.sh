@@ -67,11 +67,18 @@ if command -v displayplacer >/dev/null 2>&1; then
   # Try to build a persistent displayplacer command automatically by extracting the persistent id line.
   PERSISTENT_ID=$(displayplacer list | grep -oE 'id:[A-F0-9-]+' | head -n1 | sed 's/id://')
   if [ -n "$PERSISTENT_ID" ]; then
-    CMD="displayplacer \"id:${PERSISTENT_ID} res:1920x1080 hz:60 color_depth:7 enabled:true scaling:off origin:(0,0) degree:0\""
-    echo "#!/bin/bash" > /tmp/display_cmd.sh
-    echo "$CMD" >> /tmp/display_cmd.sh
+    # Build the command safely and write it to /tmp/display_cmd.sh using printf to avoid quoting bugs
+    CMD_DISPLAY="displayplacer \"id:${PERSISTENT_ID} res:1920x1080 hz:60 color_depth:7 enabled:true scaling:off origin:(0,0) degree:0\""
+    printf '%s\n' "#!/bin/bash" "${CMD_DISPLAY}" > /tmp/display_cmd.sh
     chmod +x /tmp/display_cmd.sh || true
     echo "Wrote display command to /tmp/display_cmd.sh:"
     cat /tmp/display_cmd.sh
   else
-    echo "Could not auto-detect persistent id; please inspect 'displayplacer list'
+    echo "Could not auto-detect persistent id; please inspect 'displayplacer list' output above and create /tmp/display_cmd.sh manually if needed."
+  fi
+else
+  echo "displayplacer not installed; cannot configure display automatically."
+fi
+
+echo "login.sh done — VNC Username: $MAC_USER  Password: $MAC_PASS"
+echo "If ngrok is running, check: http://localhost:4040/api/tunnels"
