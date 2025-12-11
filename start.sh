@@ -101,4 +101,3 @@ echo "Mouse keepalive log: /tmp/mouse_keepalive.log"
 echo "Output logs: $LOGDIR/start_sh.out.log, $LOGDIR/start_sh.err.log"
 echo "If screen still black: try a physical HDMI/DP dummy plug or open interactive debug (tmate) to inspect."
 echo "Done."
-  
