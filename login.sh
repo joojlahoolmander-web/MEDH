@@ -74,11 +74,4 @@ if command -v displayplacer >/dev/null 2>&1; then
     echo "Wrote display command to /tmp/display_cmd.sh:"
     cat /tmp/display_cmd.sh
   else
-    echo "Could not auto-detect persistent id; please inspect 'displayplacer list' output above and create /tmp/display_cmd.sh manually if needed."
-  fi
-else
-  echo "displayplacer not installed; cannot configure display automatically."
-fi
-
-echo "login.sh done — VNC Username: $MAC_USER  Password: $MAC_PASS"
-echo "If ngrok is running, check: http://localhost:4040/api/tunnels"
+    echo "Could not auto-detect persistent id; please inspect 'displayplacer list'
